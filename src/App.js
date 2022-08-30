@@ -1,9 +1,9 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Chat from './components/Chat';
+import React from "react";
+import Navbar from "./components/Navbar";
+import Chat from "./components/Chat";
 
-import { auth } from './firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const style = {
   appContainer: `max-w-[728px] mx-auto text-center`,
@@ -15,10 +15,10 @@ function App() {
   //  console.log(user)
   return (
     <div className={style.appContainer}>
-      <section className='{style.sectionContainer}'>
+      <section className="{style.sectionContainer}">
         {/* Navbar */}
         <Navbar />
-        {user ? <Chat /> : null}
+        {user ? <Chat user={user} /> : null}
       </section>
     </div>
   );
