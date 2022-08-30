@@ -8,7 +8,7 @@ const style = {
   button: `w-[20%] bg-green-500`,
 };
 
-const SendMessage = ({ scroll }) => {
+const SendMessage = () => {
   const [input, setInput] = useState("");
 
   const sendMessage = async (e) => {
@@ -18,14 +18,14 @@ const SendMessage = ({ scroll }) => {
       return;
     }
     const { uid, displayName } = auth.currentUser;
+    let messageText = input;
+    setInput("");
     await addDoc(collection(db, "messages"), {
-      text: input,
+      text: messageText,
       name: displayName,
       uid,
       timestamp: serverTimestamp(),
     });
-    setInput("");
-    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
